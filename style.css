@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+}
+
+.wrapper {
+    height: 100vh;
+    position: relative;
+    text-align: center;
+    background-image: url(./img/2.webp);
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.image {
+    width: clamp(300px, 35vw, 500px);
+    /* Скругление углов блока */
+    border-radius: 50%;
+    animation: borderRadius 1s infinite alternate;
+}
+
+@keyframes borderRadius {
+    0% {
+        rotate: -10deg;
+        scale: 0.5;
+    }
+
+    50% {
+        border-radius: 5%;
+    }
+
+    100% {
+        rotate: 10deg;
+        scale: 1;
+    }
+}
+
+.poem {
+    font-size: clamp(20px, 0.9vw, 30px);
+    animation: fontcolor 1s alternate infinite;
+    background-color: white;
+    padding: 20px;
+}
+
+@keyframes fontcolor {
+    20% {
+        color: blue;
+    }
+
+    50% {
+        color: red;
+    }
+
+    100% {
+        color: green;
+    }
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+}
+
+.text {
+    /* vw - ширина видимой области экрана */
+    font-size: 7vw;
+    /* Установить шрифт для элемента */
+    font-family: "Russo One", serif;
+    font-weight: 400;
+    color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Сдвинуть элемент на -50% по х и по -50% относительно начального положения  */
+    transform: translate(-50%, -50%);
+    animation: zoom 0.2s infinite alternate;
+}
+
+@keyframes zoom {
+    0% {
+        scale: 100%;
+    }
+
+    100% {
+        scale: 90%;
+    }
+}
+
+.trigger {
+    position: absolute;
+    left: -9999px;
+}
+
+.trigger:checked+.overlay {
+    height: 0px;
+    overflow: hidden;
+}
